@@ -1,3 +1,3 @@
 # TwitterAnalysis_Python
-Clone git
-Run requirements
+# Clone git
+# Run requirements
