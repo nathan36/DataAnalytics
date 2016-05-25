@@ -2,5 +2,5 @@
 Text mining using Twitter API
 
 # Installation
-Clone git
+Clone git <br/>
 Run pip install -r requirements.txt
