@@ -1,3 +1,6 @@
 # TwitterAnalysis_Python
-# Clone git
-# Run requirements
+Text mining using Twitter API
+
+# Installation
+Clone git
+Run pip install -r requirements.txt
