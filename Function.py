@@ -3,6 +3,7 @@ import matplotlib as mpl
 import seaborn as sns
 from scipy.misc import imread
 from wordcloud import WordCloud, STOPWORDS
+import re
 
 # Seaborn plots
 sns.set_palette("deep", desat=.6)
@@ -63,3 +64,12 @@ def draw_wordcloud(data, mask_img_path):
     plt.imshow(wc)
     plt.axis("off")
     plt.show()
+
+def word_search(word, text):
+    word = word.lower()
+    text = text.lower()
+    match = re.search(word, text)
+    if match:
+        return True
+    else:
+        return False

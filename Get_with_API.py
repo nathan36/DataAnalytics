@@ -16,9 +16,9 @@ auth = OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
 api = API(auth, wait_on_rate_limit=True)
 
-data = Cursor(api.search, q='Hootsuite').items(max_tweets)
+data = Cursor(api.search, q='"insights west"').items(max_tweets)
 
-tweet = './twitter_data.txt'
+tweet = './' + str(time.time()) + 'twitter_data.txt'
 
 with open(tweet, 'w') as outfile:
     for line in data:

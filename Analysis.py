@@ -21,16 +21,19 @@ tweets['lang'] = map(lambda tweet: tweet['lang'] if 'lang' in tweet else np.nan,
 tweets['country'] = [tweet['place']['country'] if "place" in tweet and tweet['place'] else np.nan for tweet in
                      tweets_data]
 
+# Filter tweets by lang and context relevance
 df = pd.DataFrame.dropna(tweets)
-tweets_obj = df[df.lang == 'en']
+df_tweets = df[df.lang == 'en']
+df_tweets['relevant'] = df_tweets['text'].apply(lambda tweet: fc.word_search('service', tweets_data))
 
-text = " ".join(tweets_obj['text'])
+# Combine text into single string
+text = " ".join(df_tweets[['relevant'] == True]['text'])
 no_urls_no_tags = " ".join([word for word in text.split()
                             if 'http' not in word
                             and not word.startswith('@')
                             and word != 'RT'
                             ])
 
-fc.plot_tweets_per_category(tweets['country'], "Top 5 languages", "Language", "Number of Tweets")
-fc.plot_distribution(tweets['country'].value_counts(), "Top 5 languages", "Language", "Number of Tweets")
+# fc.plot_tweets_per_category(tweets['country'], "Top 5 languages", "Language", "Number of Tweets")
+# fc.plot_distribution(tweets['country'].value_counts(), "Top 5 languages", "Language", "Number of Tweets")
 fc.draw_wordcloud(no_urls_no_tags, "./twitter_mask.png")
