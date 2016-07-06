@@ -2,7 +2,7 @@ pandas==0.18.1
 numpy==1.11.0
 matplotlib==1.5.1
 seaborn==0.7.0
-scipy=0.17.1
+scipy==0.17.1
 pillow==3.2.0
 wordcloud==1.2.1
 tweepy==3.5.0

@@ -22,4 +22,6 @@ if __name__ == '__main__':
     auth = OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_token, access_token_secret)
     stream = Stream(auth, StdOutListener())
-    stream.filter(track=['insights west'])
+
+    # set search key word
+    stream.filter(track=['TEXT'])
