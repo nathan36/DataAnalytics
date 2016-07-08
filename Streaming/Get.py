@@ -22,7 +22,7 @@ class StdOutListener(StreamListener):
 if __name__ == '__main__':
     auth = OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_token, access_token_secret)
-    outfile = open('Data/twitter_data.txt', 'w')
+    outfile = open('../Data/streaming_data.txt', 'w')
     stream = Stream(auth, StdOutListener())
 
     # set search key word

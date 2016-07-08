@@ -5,7 +5,7 @@ from Function import word_search
 from Function import draw_wordcloud
 
 # point to the text file with captured tweets
-tweets_data_path = '../Data/twitter_data.txt'
+tweets_data_path = '../Data/streaming_data.txt'
 
 tweets_data = []
 tweets_file = open(tweets_data_path, "r")
