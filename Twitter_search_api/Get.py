@@ -1,5 +1,5 @@
-from tweepy import AppAuthHandler
 from tweepy import API
+from tweepy import AppAuthHandler
 from tweepy import TweepError
 from GetOldTweets import manager
 
@@ -12,13 +12,12 @@ auth = AppAuthHandler(consumer_key, consumer_secret)
 api = API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
 
 # set search key word, data range and maximum number of tweets for capturing
-tweetCriteria = manager.TweetCriteria().setQuerySearch('hyperwallet')\
-    .setSince("2016-05-00").setUntil("2016-07-06").setMaxTweets(100000)
+tweetCriteria = manager.TweetCriteria().setQuerySearch('hootsuite')\
+    .setSince("2015-04-00").setUntil("2016-07-06").setMaxTweets(100000)
 
 data = manager.TweetManager.getTweets(tweetCriteria)
 
-tweet = '../Data/twitter_data.txt'
-print 'write'
+tweet = 'twitter_data.txt'
 with open(tweet, 'w') as outfile:
     for line in data:
         try:
