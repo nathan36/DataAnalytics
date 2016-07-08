@@ -1,6 +1,28 @@
-# TwitterAnalysis_Python
-Text mining using Twitter API
+Text Mining Tweets with Python
+==============================
 
-# Installation
-Clone git <br/>
-Run pip install -r requirements.txt
+This is an example of text mining tweets using Twitter API and streaming
+It's written for Python 
+
+Installation
+------------
+
+    git clone https://github.com/nathanli36/R-Programming.git
+    Run: pip install -r requirements.txt
+
+How to use it
+-------------
+    
+1.  Run Get.py for mining tweets with Twitter search API
+    or Get_with_streaming.py for mining tweets with streaming
+
+2.  Run Analysis.py to create a word cloud 
+    
+
+
+
+
+
+
+
+
