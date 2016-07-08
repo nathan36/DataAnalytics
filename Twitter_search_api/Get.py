@@ -12,13 +12,13 @@ auth = AppAuthHandler(consumer_key, consumer_secret)
 api = API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
 
 # set search key word, data range and maximum number of tweets for capturing
-tweetCriteria = manager.TweetCriteria().setQuerySearch('hootsuite')\
-    .setSince("2016-01-01").setUntil("2016-07-06").setMaxTweets(100000)
+tweetCriteria = manager.TweetCriteria().setQuerySearch('apple')\
+    .setSince("2016-07-05").setUntil("2016-07-06").setMaxTweets(100000)
 
 data = manager.TweetManager.getTweets(tweetCriteria)
 
-tweet = 'twitter_data.txt'
-
+tweet = 'Data/twitter_data.txt'
+print 'write'
 with open(tweet, 'w') as outfile:
     for line in data:
         try:

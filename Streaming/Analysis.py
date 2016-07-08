@@ -1,21 +1,22 @@
 import json
 import pandas as pd
 import numpy as np
-import Function as fun
+from Function import word_search
+from Function import draw_wordcloud
 
 # point to the text file with captured tweets
-tweets_data_path = './Data/twitter_data.txt'
+tweets_data_path = '../Data/twitter_data.txt'
 
 tweets_data = []
 tweets_file = open(tweets_data_path, "r")
 for line in tweets_file:
     try:
-        tweet = json.load(line)
+        tweet = json.loads(line)
         tweets_data.append(tweet)
     except:
         continue
 
-tweets = pd.DataFrame(tweets_data)
+tweets = pd.DataFrame()
 
 tweets['text'] = map(lambda tweet: tweet['text'] if 'text' in tweet else np.nan, tweets_data)
 tweets['lang'] = map(lambda tweet: tweet['lang'] if 'lang' in tweet else np.nan, tweets_data)
@@ -23,17 +24,18 @@ tweets['country'] = [tweet['place']['country'] if "place" in tweet and tweet['pl
                      tweets_data]
 
 # filter tweets by lang and context relevance
-df = pd.DataFrame.dropna(tweets)
-df_tweets = df[df.lang == 'en']
-df_tweets['relevant'] = df_tweets['text'].apply(lambda tweet: fun.word_search('TEXT', tweets_data))
+tweets_en = tweets[tweets['lang'] == 'en']
+tweets_en['relevant'] = tweets_en['text'].apply(lambda tweet: word_search('iphone', tweet))
 
 # combine text into single string for word cloud processing
-text = " ".join(df_tweets[['relevant'] == True]['text'])
+text = " ".join(tweets['text'])
 filter_text = " ".join([word for word in text.split()
                             if 'http' not in word
                             and not word.startswith('@')
                             and 'RT' not in word
                             ])
 
+
 # create word cloud
-fun.draw_wordcloud(filter_text, "./twitter_mask.png")
+draw_wordcloud(filter_text, "../twitter_mask.png")
+

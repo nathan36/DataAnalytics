@@ -11,8 +11,7 @@ consumer_secret = "JpxYvtCtHIsV3E0IuRWG9DvhejpsdqHq8SxL75fM5hDt88nFAx"
 
 class StdOutListener(StreamListener):
     def on_data(self, data):
-        json_data = json.loads(data)
-        outfile.write(str(json_data) + '\n')
+        outfile.write(data)
         print data
         return True
 
@@ -27,7 +26,7 @@ if __name__ == '__main__':
     stream = Stream(auth, StdOutListener())
 
     # set search key word
-    stream.filter(track=['hootchat'])
+    stream.filter(track=['apple'])
 
 
 
