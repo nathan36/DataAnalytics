@@ -12,10 +12,9 @@ auth = AppAuthHandler(consumer_key, consumer_secret)
 api = API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
 
 # set search key word, data range and maximum number of tweets for capturing
-# search api unstable, since unit time period should be less or equal to a month
 
 tweetCriteria = manager.TweetCriteria().setQuerySearch('hyperwallet')\
-    .setSince("2016-05-01").setUntil("2016-07-07").setMaxTweets(100000)
+    .setSince("2016-01-01").setUntil("2016-07-07").setMaxTweets(0)
 
 data = manager.TweetManager.getTweets(tweetCriteria)
 
