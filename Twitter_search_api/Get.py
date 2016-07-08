@@ -16,8 +16,8 @@ api = API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
 # Note: twitter search api unstable, for first time search, since unit period
 # recommend to be less than a month
 
-tweetCriteria = manager.TweetCriteria().setQuerySearch('hootsuite')\
-    .setSince("2016-06-01").setUntil("2016-07-07").setMaxTweets(0)
+tweetCriteria = manager.TweetCriteria().setQuerySearch('coco')\
+    .setSince("2016-04-01").setUntil("2016-07-07").setMaxTweets(0)
 
 data = manager.TweetManager.getTweets(tweetCriteria)
 
