@@ -7,7 +7,7 @@ It's written for Python
 Installation
 ------------
 
-    git clone https://github.com/nathanli36/TweetMining_Python.git
+    git clone https://github.com/nathan36/TweetMining_Python.git
     Run: pip install -r requirements.txt
 
 How to use it
