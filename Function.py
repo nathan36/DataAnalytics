@@ -1,9 +1,9 @@
 import matplotlib.pyplot as plt
-import matplotlib as mpl
 import seaborn as sns
-from scipy.misc import imread
 from wordcloud import WordCloud, STOPWORDS
+from PIL import Image
 import re
+import numpy as np
 
 # Seaborn plots
 sns.set_palette("deep", desat=.6)
@@ -58,7 +58,7 @@ def draw_wordcloud(data, mask_img_path):
     :param mask_img_path: Image used for masking
     :return: a word cloud
     """
-    mask = imread(mask_img_path, flatten=True)
+    mask = np.array(Image.open(mask_img_path))
     wc = WordCloud(background_color="white", font_path="/Library/Fonts/Verdana.ttf", stopwords=STOPWORDS, mask=mask)
     wc.generate(data)
     plt.imshow(wc)

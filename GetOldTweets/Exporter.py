@@ -70,7 +70,7 @@ def main(argv):
 		print 'Arguments parser error, try -h' + arg
 	finally:
 		outputFile.close()
-		print 'Done. Output file generated "output_got.csv".'
+		print 'Done. Graph file generated "output_got.csv".'
 
 if __name__ == '__main__':
 	main(sys.argv[1:])

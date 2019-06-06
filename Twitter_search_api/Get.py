@@ -16,12 +16,13 @@ api = API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
 # Note: twitter search api unstable, for first time search, since unit period
 # recommend to be less than a month
 
-tweetCriteria = manager.TweetCriteria().setQuerySearch('coco')\
-    .setSince("2016-04-01").setUntil("2016-07-07").setMaxTweets(0)
+keyword = "Dialpad"
+tweetCriteria = manager.TweetCriteria().setQuerySearch(keyword)\
+    .setSince("2018-01-01").setUntil("2019-06-06").setMaxTweets(0)
 
 data = manager.TweetManager.getTweets(tweetCriteria)
 
-tweet = '../Data/' + str(time.time()) + 'twitter_data.txt'
+tweet = '../Data/' + 'twitter_' + keyword + '_' + str(time.time()) + '.txt'
 with open(tweet, 'w') as outfile:
     for line in data:
         try:

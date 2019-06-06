@@ -1,9 +1,10 @@
 import pandas as pd
 import Function as fun
+import re
 
 # point to the text file with captured tweets
-tweets_data_path = './Data/twitter_data.txt'
-
+fileName = 'twitter_Dialpad_1559845225.21'
+tweets_data_path = './Data/' + fileName + '.txt'
 tweets_data = []
 tweets_file = open(tweets_data_path, "r")
 for line in tweets_file:
@@ -11,17 +12,19 @@ for line in tweets_file:
         tweets_data.append(line)
     except:
         continue
-
 # filter tweets with condition
 tweets = pd.DataFrame(tweets_data)
 tweets['cond'] = tweets[0].apply(lambda x: fun.word_search('changing', x)
                                             or fun.word_search('revenue', x))
 tweets['text'] = tweets[tweets['cond'] == True][0]
-
 # combine text into single string for word cloud processing
 combine = " ".join(tweets_data)
 text = combine.lower()
-filter_text = " ".join([word for word in text.split()
+no_links = re.sub(r'http\S+','',text)
+no_unicode = re.sub(r"\\[a-z][a-z]?[0-9]+",'',no_links)
+no_special_char = re.sub('[^A-Za-z ]+','',no_unicode)
+
+filter_words = " ".join([word for word in text.split()
                             if 'http' not in word
                             and not word.startswith('@')
                             and 'RT' not in word
@@ -31,7 +34,7 @@ filter_text = " ".join([word for word in text.split()
                             and 'media' not in word
                             and 'pic' not in word
                             and 'thank' not in word
+                            and len(word) > 2
                             ])
-
 # create word cloud
-fun.draw_wordcloud(filter_text, "./twitter_mask.png")
+fun.draw_wordcloud(filter_words, mask_img_path="./twitter_mask.png")
