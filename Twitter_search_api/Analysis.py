@@ -1,10 +1,12 @@
 import pandas as pd
 import Function as fun
 import re
+import os
 
 # point to the text file with captured tweets
-fileName = 'twitter_Dialpad_1559845225.21'
-tweets_data_path = './Data/' + fileName + '.txt'
+fileName = 'twitter_unbounce'
+
+tweets_data_path = os.path.join('..','Data',fileName + '.txt')
 tweets_data = []
 tweets_file = open(tweets_data_path, "r")
 for line in tweets_file:
@@ -37,4 +39,4 @@ filter_words = " ".join([word for word in text.split()
                             and len(word) > 2
                             ])
 # create word cloud
-fun.draw_wordcloud(filter_words, mask_img_path="./twitter_mask.png")
+fun.draw_wordcloud(filter_words, mask_img_path="../twitter_mask.png")

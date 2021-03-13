@@ -59,7 +59,7 @@ def draw_wordcloud(data, mask_img_path):
     :return: a word cloud
     """
     mask = np.array(Image.open(mask_img_path))
-    wc = WordCloud(background_color="white", font_path="/Library/Fonts/Verdana.ttf", stopwords=STOPWORDS, mask=mask)
+    wc = WordCloud(background_color="white", stopwords=STOPWORDS, mask=mask)
     wc.generate(data)
     plt.imshow(wc)
     plt.axis("off")
